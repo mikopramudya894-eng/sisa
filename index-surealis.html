@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sisa</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Special+Elite&display=swap');
+
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:#0b0b0a;
+    color:#d8d3c8;
+    overflow-x:hidden;
+    font-family:"Cormorant Garamond",Georgia,serif;
+}
+
+body:before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:5;
+    opacity:.08;
+    background-image:
+        radial-gradient(#fff 0.5px,transparent .7px),
+        radial-gradient(#fff 0.4px,transparent .6px);
+    background-size:9px 9px,13px 13px;
+    background-position:0 0,4px 7px;
+}
+
+.page{
+    position:relative;
+    width:min(900px,100%);
+    margin:auto;
+    padding:12vh 8vw 18vh;
+}
+
+header{
+    height:35vh;
+    position:relative;
+}
+
+.title{
+    position:absolute;
+    left:4%;
+    top:8%;
+    font-size:clamp(80px,20vw,190px);
+    font-weight:400;
+    letter-spacing:-8px;
+    transform:rotate(-8deg);
+    margin:0;
+}
+
+.title span{
+    display:block;
+    position:absolute;
+    left:42px;
+    top:32px;
+    color:transparent;
+    -webkit-text-stroke:1px #68645d;
+    z-index:-1;
+}
+
+.subtitle{
+    position:absolute;
+    right:4%;
+    bottom:18%;
+    width:190px;
+    font-family:"Special Elite",monospace;
+    font-size:10px;
+    line-height:1.7;
+    letter-spacing:2px;
+    color:#77736b;
+    transform:rotate(7deg);
+}
+
+.eye{
+    position:absolute;
+    width:125px;
+    height:70px;
+    border:1px solid #77736b;
+    border-radius:70% 0;
+    transform:rotate(25deg);
+    right:22%;
+    top:4%;
+    opacity:.38;
+}
+
+.eye:before{
+    content:"";
+    position:absolute;
+    width:28px;
+    height:28px;
+    border:1px solid #aaa;
+    border-radius:50%;
+    left:47px;
+    top:20px;
+}
+
+.eye:after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:#aaa;
+    border-radius:50%;
+    left:57px;
+    top:30px;
+}
+
+.story{
+    position:relative;
+}
+
+p{
+    max-width:620px;
+    margin:0 0 65px;
+    font-size:clamp(19px,3.2vw,27px);
+    line-height:1.65;
+    letter-spacing:.2px;
+}
+
+p:nth-of-type(1){
+    margin-left:2%;
+    transform:rotate(-.7deg);
+}
+
+p:nth-of-type(2){
+    margin-left:23%;
+    transform:rotate(1.8deg);
+}
+
+p:nth-of-type(3){
+    margin-left:8%;
+    transform:rotate(-1.1deg);
+}
+
+p:nth-of-type(4){
+    margin-left:31%;
+    transform:rotate(.8deg);
+}
+
+p:nth-of-type(5){
+    margin-left:4%;
+    transform:rotate(1.3deg);
+}
+
+p:nth-of-type(6){
+    margin-left:27%;
+    transform:rotate(-1.5deg);
+}
+
+p:before{
+    content:"";
+    display:block;
+    width:38px;
+    height:1px;
+    background:#77736b;
+    margin-bottom:13px;
+    opacity:.45;
+}
+
+.fragment{
+    position:absolute;
+    font-family:"Special Elite",monospace;
+    color:#5d5a54;
+    font-size:10px;
+    letter-spacing:3px;
+    opacity:.6;
+    white-space:nowrap;
+}
+
+.f1{top:4%;right:-3%;transform:rotate(90deg)}
+.f2{top:28%;left:-7%;transform:rotate(-90deg)}
+.f3{top:58%;right:0;transform:rotate(180deg)}
+.f4{bottom:16%;left:3%;transform:rotate(4deg)}
+
+.house{
+    position:relative;
+    width:210px;
+    height:150px;
+    margin:100px auto 90px;
+    opacity:.35;
+}
+
+.house .roof{
+    position:absolute;
+    width:150px;
+    height:150px;
+    border-left:1px solid #999;
+    border-top:1px solid #999;
+    transform:rotate(45deg);
+    left:30px;
+    top:-20px;
+}
+
+.house .body{
+    position:absolute;
+    width:160px;
+    height:105px;
+    border:1px solid #888;
+    left:25px;
+    top:25px;
+}
+
+.house .door{
+    position:absolute;
+    width:35px;
+    height:60px;
+    border:1px solid #888;
+    bottom:0;
+    left:62px;
+}
+
+.house .chair{
+    position:absolute;
+    width:35px;
+    height:42px;
+    border:1px solid #aaa;
+    right:25px;
+    bottom:8px;
+    transform:rotate(12deg);
+}
+
+.house .chair:before{
+    content:"";
+    position:absolute;
+    width:35px;
+    height:1px;
+    background:#aaa;
+    top:12px;
+    left:0;
+}
+
+.orbit{
+    width:250px;
+    height:70px;
+    border:1px solid #666;
+    border-radius:50%;
+    margin:0 auto 70px;
+    transform:rotate(-18deg);
+    position:relative;
+}
+
+.orbit:before{
+    content:"kursi";
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(18deg);
+    font-family:"Special Elite",monospace;
+    font-size:9px;
+    letter-spacing:4px;
+}
+
+.ending{
+    text-align:center;
+    font-family:"Special Elite",monospace;
+    font-size:11px;
+    line-height:2;
+    letter-spacing:3px;
+    color:#716d65;
+    transform:rotate(2deg);
+}
+
+.floating{
+    position:fixed;
+    color:#aaa;
+    opacity:.16;
+    font-family:Georgia,serif;
+    pointer-events:none;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{transform:translateY(-10vh) rotate(0deg)}
+    to{transform:translateY(110vh) rotate(360deg)}
+}
+
+@media(max-width:600px){
+    .page{padding:8vh 7vw 15vh}
+    header{height:32vh}
+    .subtitle{right:0;bottom:10%;width:150px}
+    .eye{right:8%;top:0;transform:scale(.7) rotate(25deg)}
+    p,p:nth-of-type(1),p:nth-of-type(2),p:nth-of-type(3),
+    p:nth-of-type(4),p:nth-of-type(5),p:nth-of-type(6){
+        margin-left:0;
+    }
+    p{margin-bottom:55px}
+    .fragment{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header>
+    <h1 class="title">Sisa<span>Sisa</span></h1>
+    <div class="eye"></div>
+    <div class="subtitle">
+        beberapa rumah<br>
+        tidak dibangun<br>
+        untuk ditinggalkan
+    </div>
+</header>
+
+<main class="story">
+
+<div class="fragment f1">JANGAN MENYENTUH DINDING</div>
+<div class="fragment f2">AIR TIDAK PERNAH HABIS</div>
+<div class="fragment f3">SESEORANG MASIH DUDUK</div>
+<div class="fragment f4">07:13 / KAMAR / TIDAK ADA NAMA</div>
+
+<p>
+Setelah kekecewaan itu, sebuah kursi dibiarkan menghadap dinding.
+Tak ada yang memindahkannya, seolah di balik dinding itu masih ada
+seseorang yang sedang mendengarkan.
+</p>
+
+<p>
+Setiap malam lantai mengeluarkan bunyi pelan, seperti langkah yang
+berkali kali hendak pergi tetapi selalu kembali sebelum sampai pintu.
+</p>
+
+<p>
+Di dapur, segelas air tetap penuh. Hari hari meminumnya sedikit demi
+sedikit, namun entah mengapa air itu tak pernah berkurang.
+</p>
+
+<div class="house">
+    <div class="roof"></div>
+    <div class="body"></div>
+    <div class="door"></div>
+    <div class="chair"></div>
+</div>
+
+<p>
+Di halaman, sebuah pohon kehilangan daun, lalu kehilangan musim.
+Ia tetap berdiri, meski akarnya mulai lupa kepada tanah.
+</p>
+
+<p>
+Suatu malam, cermin kehilangan wajah. Yang tersisa hanya sebuah kamar,
+sebuah kursi, dan seseorang yang masih duduk terlalu lama.
+</p>
+
+<div class="orbit"></div>
+
+<p>
+Takut berdiri, sebab mungkin sekali bergerak, seluruh rumah akan
+mengerti bahwa sebenarnya tidak ada lagi yang sedang bertahan.
+</p>
+
+<div class="ending">
+sebuah rumah yang lupa cara ditinggalkan<br>
+dan kursi yang terlalu setia kepada dinding
+</div>
+
+</main>
+</div>
+
+<script>
+const symbols=[".","·","◦","°","∴","∵","×","o","∅","?"];
+for(let i=0;i<40;i++){
+    const e=document.createElement("div");
+    e.className="floating";
+    e.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    e.style.left=Math.random()*100+"vw";
+    e.style.fontSize=(8+Math.random()*18)+"px";
+    e.style.animationDuration=(9+Math.random()*16)+"s";
+    e.style.animationDelay=(-Math.random()*16)+"s";
+    document.body.appendChild(e);
+}
+</script>
+
+</body>
+</html>
